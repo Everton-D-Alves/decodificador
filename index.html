@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel = "shortcut icon" href = "sorriso.ico" type = "image/x-icon" />
+    <title>Exemplo de Criptografia</title>
+</head>
+<body style = "background-color: cyan; color: blue;">
+    <div style = "text-align: center;">
+        <h2>Texto para Criptografar</h2>
+        <textarea class="div-texto" rows="4" cols="50"></textarea>
+        <br>
+        <button onclick="btnCriptografar()">Criptografar</button>
+    </div>
+    <br>
+    <div style = "text-align: center;">
+        <h2>Texto Criptografado</h2>
+        <textarea class="div-mensagem" rows="4" cols="50"></textarea>
+        <br>
+        <button onclick="btnDescriptografar()">Descriptografar</button>
+    </div>
+    <!-- Importar o CryptoJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <!-- Seu script JavaScript -->
+    <script>
+        const input_text = document.querySelector('.div-texto'); // 1º Textarea
+        const input_mensagem = document.querySelector('.div-mensagem'); // 2º textarea
+
+        function btnCriptografar() {
+            const texto = input_text.value;
+            const senha = prompt("Digite a senha para criptografar:");
+            if(senha !== "s3N§4"){
+                return alert("Valor inválido!");
+            }
+            const textoCriptografado = CryptoJS.AES.encrypt(texto, senha).toString();
+            input_mensagem.value = textoCriptografado;
+            input_text.value = '';
+        }
+
+        function btnDescriptografar() {
+            const textoCriptografado = input_mensagem.value;
+            const senha = prompt("Digite a senha para descriptografar:");
+            const textoDescriptografado = CryptoJS.AES.decrypt(textoCriptografado, senha).toString(CryptoJS.enc.Utf8);
+            input_text.value = textoDescriptografado;
+            input_mensagem.value = '';
+        }
+    </script>
+    <footer>ChatGPT ®</footer>
+</body>
+</html>
+
