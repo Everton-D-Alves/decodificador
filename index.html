@@ -26,11 +26,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <!-- Seu script JavaScript -->
     <script>
-        const input_text = document.querySelector('.div-texto'); // 1º Textarea
-        const input_mensagem = document.querySelector('.div-mensagem'); // 2º textarea
+        const input_text = document.querySelector('.div-texto'); // 1º Textarea.
+        const input_mensagem = document.querySelector('.div-mensagem'); // 2º textarea.
 
         function btnCriptografar() {
-            const texto = input_text.value;
+            const texto = input_text.value; // Valor do 1º textarea.
             const senha = prompt("Digite a senha para criptografar:");
             if(senha !== "s3N§4"){
                 return alert("Valor inválido!");
@@ -41,7 +41,7 @@
         }
 
         function btnDescriptografar() {
-            const textoCriptografado = input_mensagem.value;
+            const textoCriptografado = input_mensagem.value; // Valor do 2º textarea.
             const senha = prompt("Digite a senha para descriptografar:");
             const textoDescriptografado = CryptoJS.AES.decrypt(textoCriptografado, senha).toString(CryptoJS.enc.Utf8);
             input_text.value = textoDescriptografado;
